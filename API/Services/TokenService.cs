@@ -17,7 +17,8 @@ public class TokenService(IConfiguration config) : ITokenService
         // throw new NotImplementedException();
         var claims = new List<Claim>
         {
-            new(ClaimTypes.NameIdentifier, users.UserName)
+            new(ClaimTypes.NameIdentifier, users.Id.ToString()),
+            new(ClaimTypes.Name, users.UserName)
         };
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
